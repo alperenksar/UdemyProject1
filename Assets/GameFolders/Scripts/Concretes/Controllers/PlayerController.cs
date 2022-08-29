@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UdemyProject1.Input;
+using UdemyProject1.Movements;
 
 
 namespace UdemyProject1.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] float _force;
-        Rigidbody _rocketRb;
+        Mover _mover;
         DefaultInput _Input;
 
         bool _isForceUp;
@@ -18,8 +18,8 @@ namespace UdemyProject1.Controllers
 
         private void Awake()
         {
-            _rocketRb = GetComponent<Rigidbody>();
             _Input = new DefaultInput();
+            _mover = new Mover(rigidbody: GetComponent<Rigidbody>());
         }
 
 
@@ -44,7 +44,7 @@ namespace UdemyProject1.Controllers
             //Fizik iþlemlerini yaparýz...
             if (_isForceUp)
             {
-                _rocketRb.AddForce(Vector3.up * Time.deltaTime*_force);
+                _mover.FixedTick();
             }
 
           
