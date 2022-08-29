@@ -459,7 +459,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-14216
+  m_Name: pb_Mesh-1340
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1246,13 +1246,17 @@ PrefabInstance:
       propertyPath: _force
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 301087636606658500, guid: 28dd7ec803336ec468c138fad7d3afe6, type: 3}
+      propertyPath: _turnSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3247715111992058420, guid: 28dd7ec803336ec468c138fad7d3afe6, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 990018742}
     - target: {fileID: 3247715111992058420, guid: 28dd7ec803336ec468c138fad7d3afe6, type: 3}
       propertyPath: m_VersionIndex
-      value: 1351
+      value: 1357
       objectReference: {fileID: 0}
     - target: {fileID: 3273714353690586426, guid: 28dd7ec803336ec468c138fad7d3afe6, type: 3}
       propertyPath: m_Constraints

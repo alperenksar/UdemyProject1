@@ -11,13 +11,17 @@ namespace UdemyProject1.Controllers
     {
         Mover _mover;
         DefaultInput _Input;
+        Rotator _rotator;
 
         bool _isForceUp;
+        float _leftRight;
+        public float _turnSpeed;
 
 
 
         private void Awake()
         {
+            _rotator = new Rotator(this);
             _Input = new DefaultInput();
             _mover = new Mover(rigidbody: GetComponent<Rigidbody>());
         }
@@ -28,6 +32,8 @@ namespace UdemyProject1.Controllers
         void Update()
         {
             //Updateler ile input alýrýz...
+            Debug.Log(_Input.LeftRight);
+
             if (_Input.IsForceUp)
             {
                 _isForceUp = true;
@@ -36,6 +42,8 @@ namespace UdemyProject1.Controllers
             {
                 _isForceUp = false;
             }
+
+            _leftRight=_Input.LeftRight;
 
         }
 
@@ -47,7 +55,9 @@ namespace UdemyProject1.Controllers
                 _mover.FixedTick();
             }
 
-          
+            _rotator.FixedTick(_leftRight);
+
+
 
         }
 
