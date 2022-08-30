@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UdemyProject1.Input;
 using UdemyProject1.Movements;
+using UdemyProject1.Managers;
 
 
 namespace UdemyProject1.Controllers
@@ -14,6 +15,8 @@ namespace UdemyProject1.Controllers
         Rotator _rotator;
         Fuel _fuel;
 
+
+        bool _canMove;
         bool _canForceUp;
         float _leftRight;
         public float _turnSpeed;
@@ -27,14 +30,23 @@ namespace UdemyProject1.Controllers
             _mover = new Mover(rigidbody: GetComponent<Rigidbody>());
             _fuel =GetComponent<Fuel>();
         }
-
+        private void Start()
+        {
+            _canMove = true;
+        }
 
 
         // Update is called once per frame
         void Update()
         {
             //Updateler ile input alýrýz...
-            Debug.Log(_Input.LeftRight);
+
+            //if (!_canMove)
+            //{
+            //    return;
+            //}
+
+            if (!_canMove) return;
 
             if (_Input.IsForceUp && !_fuel.IsEmpty) 
             {
@@ -60,9 +72,27 @@ namespace UdemyProject1.Controllers
             }
 
             _rotator.FixedTick(_leftRight);
+        }
 
 
+        private void OnEnable()
+        {
+            GameManager.Instance.OnGameOver += HandleOnEventTrigger;
+            GameManager.Instance.OnMissionSucced += HandleOnEventTrigger;
+        }
 
+        private void HandleOnEventTrigger()
+        {
+            _canMove = false;
+            _canForceUp = false;
+            _leftRight = 0f;
+            _fuel.FuelIncrease(0f);
+        }
+
+        private void OnDisable()
+        {
+            GameManager.Instance.OnGameOver -= HandleOnEventTrigger;
+            GameManager.Instance.OnMissionSucced -= HandleOnEventTrigger;
         }
 
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UdemyProject1.Managers;
 
 
 namespace UdemyProject1.Controllers
@@ -20,6 +21,8 @@ namespace UdemyProject1.Controllers
             if (collision.GetContact(0).normal.y == -1)
             {
                 _endEffect.SetActive(true);
+                GameManager.Instance.MissionSucced();
+
             }
         }
 
