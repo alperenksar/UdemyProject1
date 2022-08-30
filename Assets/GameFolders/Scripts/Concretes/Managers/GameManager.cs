@@ -61,6 +61,16 @@ namespace UdemyProject1.Managers
             yield return SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+levelindex);
         }
 
+        public void LoadMenuScene()
+        {
+            StartCoroutine("LoadMenuSceneAsync");
+        }
+
+        IEnumerator LoadMenuSceneAsync()
+        {
+            yield return SceneManager.LoadSceneAsync("Menu");
+        }
+
 
         public void Exit()
         {
