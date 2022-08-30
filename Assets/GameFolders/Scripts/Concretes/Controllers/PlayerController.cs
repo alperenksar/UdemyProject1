@@ -12,8 +12,9 @@ namespace UdemyProject1.Controllers
         Mover _mover;
         DefaultInput _Input;
         Rotator _rotator;
+        Fuel _fuel;
 
-        bool _isForceUp;
+        bool _canForceUp;
         float _leftRight;
         public float _turnSpeed;
 
@@ -24,6 +25,7 @@ namespace UdemyProject1.Controllers
             _rotator = new Rotator(this);
             _Input = new DefaultInput();
             _mover = new Mover(rigidbody: GetComponent<Rigidbody>());
+            _fuel =GetComponent<Fuel>();
         }
 
 
@@ -34,13 +36,14 @@ namespace UdemyProject1.Controllers
             //Updateler ile input alýrýz...
             Debug.Log(_Input.LeftRight);
 
-            if (_Input.IsForceUp)
+            if (_Input.IsForceUp && !_fuel.IsEmpty) 
             {
-                _isForceUp = true;
+                _canForceUp = true;
             }
             else
             {
-                _isForceUp = false;
+                _canForceUp = false;
+                _fuel.FuelIncrease(0.02f);
             }
 
             _leftRight=_Input.LeftRight;
@@ -50,9 +53,10 @@ namespace UdemyProject1.Controllers
         private void FixedUpdate()
         {
             //Fizik iþlemlerini yaparýz...
-            if (_isForceUp)
+            if (_canForceUp)
             {
                 _mover.FixedTick();
+                _fuel.FuelDecrease(0.2f);
             }
 
             _rotator.FixedTick(_leftRight);
