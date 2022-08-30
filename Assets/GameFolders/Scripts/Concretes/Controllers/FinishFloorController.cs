@@ -12,7 +12,12 @@ namespace UdemyProject1.Controllers
         {
             PlayerController player = collision.collider.GetComponent<PlayerController>();
 
-            if (player != null)
+            if (player == null)
+            {
+                return;
+            }
+
+            if (collision.GetContact(0).normal.y == -1)
             {
                 _endEffect.SetActive(true);
             }
