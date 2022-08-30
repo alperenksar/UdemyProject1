@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: b8f20d5ca50d16143afc11f5e4af6fc1, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a07fadb24ea940240afba3afc1a692cc, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.2996273, g: 0.25062415, b: 0.20409787, a: 1}
+  m_IndirectSpecularColor: {r: 0.051441513, g: 0.1500552, b: 0.19368404, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -459,7 +459,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1340
+  m_Name: pb_Mesh-12416
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1242,25 +1242,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 301087636606658500, guid: 28dd7ec803336ec468c138fad7d3afe6, type: 3}
-      propertyPath: _force
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 301087636606658500, guid: 28dd7ec803336ec468c138fad7d3afe6, type: 3}
-      propertyPath: _turnSpeed
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 3247715111992058420, guid: 28dd7ec803336ec468c138fad7d3afe6, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 990018742}
     - target: {fileID: 3247715111992058420, guid: 28dd7ec803336ec468c138fad7d3afe6, type: 3}
       propertyPath: m_VersionIndex
-      value: 1357
-      objectReference: {fileID: 0}
-    - target: {fileID: 3273714353690586426, guid: 28dd7ec803336ec468c138fad7d3afe6, type: 3}
-      propertyPath: m_Constraints
-      value: 56
+      value: 1360
       objectReference: {fileID: 0}
     - target: {fileID: 4085779010893078170, guid: 28dd7ec803336ec468c138fad7d3afe6, type: 3}
       propertyPath: m_Name
