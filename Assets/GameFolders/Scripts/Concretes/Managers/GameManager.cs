@@ -53,7 +53,7 @@ namespace UdemyProject1.Managers
 
         public void LoadLevelScene(int levelindex = 0)
         {
-            StartCoroutine("LoadLevelSceneAsync");
+            StartCoroutine(LoadLevelSceneAsync(levelindex));
         }
 
         private IEnumerator LoadLevelSceneAsync(int levelindex)
