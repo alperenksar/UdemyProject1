@@ -81,6 +81,12 @@ namespace UdemyProject1.Controllers
             GameManager.Instance.OnMissionSucced += HandleOnEventTrigger;
         }
 
+        private void OnDisable()
+        {
+            GameManager.Instance.OnGameOver -= HandleOnEventTrigger;
+            GameManager.Instance.OnMissionSucced -= HandleOnEventTrigger;
+        }
+
         private void HandleOnEventTrigger()
         {
             _canMove = false;
@@ -89,11 +95,7 @@ namespace UdemyProject1.Controllers
             _fuel.FuelIncrease(0f);
         }
 
-        private void OnDisable()
-        {
-            GameManager.Instance.OnGameOver -= HandleOnEventTrigger;
-            GameManager.Instance.OnMissionSucced -= HandleOnEventTrigger;
-        }
+       
 
 
     }
