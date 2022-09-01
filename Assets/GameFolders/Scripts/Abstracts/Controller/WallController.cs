@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UdemyProject1.Managers;
+using UdemyProject1.Controllers;
 
-namespace UdemyProject1.Controllers
+namespace UdemyProject1.Abstracts.Controllers
 {
-    public class WallController : MonoBehaviour
+    public abstract class WallController : MonoBehaviour
     {
         private void OnCollisionEnter(Collision collision)
         {
@@ -19,5 +17,5 @@ namespace UdemyProject1.Controllers
             }
         }
     }
-
+    // Abstract sýnýflarýn amacý miras vermektir.Baþka da bir amacý yoktur.
 }
