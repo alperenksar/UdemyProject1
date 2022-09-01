@@ -10,6 +10,8 @@ namespace UdemyProject1.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] Rigidbody _playerRigidbody;
+
         Mover _mover;
         DefaultInput _Input;
         Rotator _rotator;
@@ -27,7 +29,7 @@ namespace UdemyProject1.Controllers
         {
             _rotator = new Rotator(this);
             _Input = new DefaultInput();
-            _mover = new Mover(rigidbody: GetComponent<Rigidbody>());
+            _mover = new Mover(GetComponent<Rigidbody>());
             _fuel =GetComponent<Fuel>();
         }
         private void Start()
@@ -89,6 +91,7 @@ namespace UdemyProject1.Controllers
 
         private void HandleOnEventTrigger()
         {
+            _playerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
             _canMove = false;
             _canForceUp = false;
             _leftRight = 0f;

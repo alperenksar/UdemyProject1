@@ -9,9 +9,6 @@ namespace UdemyProject1.Managers
 {
     public class GameManager : MonoBehaviour
     {
-        //Tekil olmalý ve yok edilimez olmalý...
-        //I love u iloþ...
-
         public static GameManager Instance { get; private set; }
 
         public event System.Action OnGameOver;
