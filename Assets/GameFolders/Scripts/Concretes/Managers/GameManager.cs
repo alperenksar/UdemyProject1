@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UdemyProject1.Abstracts.Utilities;
 
 
 
 namespace UdemyProject1.Managers
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : SingletonThisObject<GameManager>
     {
-        public static GameManager Instance { get; private set; }
 
         public event System.Action OnGameOver;
         public event System.Action OnMissionSucced;
@@ -17,20 +17,7 @@ namespace UdemyProject1.Managers
 
         private void Awake()
         {
-            SingletonThisGameObject();
-        }
-
-        private void SingletonThisGameObject()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            SingletonThisGameObject(this);
         }
 
         public void GameOver()
