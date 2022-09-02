@@ -12,6 +12,9 @@ namespace UdemyProject1.Input
 
         public float LeftRight { get; private set; }
 
+        public bool IsPause { get; private set; }
+
+
         public DefaultInput()
         {
             _Input = new DefaultAction();
@@ -19,6 +22,8 @@ namespace UdemyProject1.Input
             _Input.Rocket.ForceUp.performed += context => IsForceUp = context.ReadValueAsButton();
 
             _Input.Rocket.LeftRight.performed += context => LeftRight = context.ReadValue<float>();
+
+            _Input.Rocket.IsPause.performed += context => IsPause = context.ReadValueAsButton();
 
             _Input.Enable();
         }

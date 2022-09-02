@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "IsPause",
+                    "type": "PassThrough",
+                    "id": "fb7a2abc-b82f-4992-98b0-729bafadf7d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -68,6 +77,17 @@
                     "action": "LeftRight",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4c89805f-ab02-4a98-a1ef-13560c81f833",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IsPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

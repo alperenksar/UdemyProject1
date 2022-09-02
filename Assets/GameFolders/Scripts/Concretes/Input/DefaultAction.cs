@@ -46,6 +46,15 @@ namespace UdemyProject1.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""IsPause"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""fb7a2abc-b82f-4992-98b0-729bafadf7d3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -92,6 +101,17 @@ namespace UdemyProject1.Input
                     ""action"": ""LeftRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4c89805f-ab02-4a98-a1ef-13560c81f833"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""IsPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -102,6 +122,7 @@ namespace UdemyProject1.Input
             m_Rocket = asset.FindActionMap("Rocket", throwIfNotFound: true);
             m_Rocket_ForceUp = m_Rocket.FindAction("ForceUp", throwIfNotFound: true);
             m_Rocket_LeftRight = m_Rocket.FindAction("LeftRight", throwIfNotFound: true);
+            m_Rocket_IsPause = m_Rocket.FindAction("IsPause", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -163,12 +184,14 @@ namespace UdemyProject1.Input
         private IRocketActions m_RocketActionsCallbackInterface;
         private readonly InputAction m_Rocket_ForceUp;
         private readonly InputAction m_Rocket_LeftRight;
+        private readonly InputAction m_Rocket_IsPause;
         public struct RocketActions
         {
             private @DefaultAction m_Wrapper;
             public RocketActions(@DefaultAction wrapper) { m_Wrapper = wrapper; }
             public InputAction @ForceUp => m_Wrapper.m_Rocket_ForceUp;
             public InputAction @LeftRight => m_Wrapper.m_Rocket_LeftRight;
+            public InputAction @IsPause => m_Wrapper.m_Rocket_IsPause;
             public InputActionMap Get() { return m_Wrapper.m_Rocket; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -184,6 +207,9 @@ namespace UdemyProject1.Input
                     @LeftRight.started -= m_Wrapper.m_RocketActionsCallbackInterface.OnLeftRight;
                     @LeftRight.performed -= m_Wrapper.m_RocketActionsCallbackInterface.OnLeftRight;
                     @LeftRight.canceled -= m_Wrapper.m_RocketActionsCallbackInterface.OnLeftRight;
+                    @IsPause.started -= m_Wrapper.m_RocketActionsCallbackInterface.OnIsPause;
+                    @IsPause.performed -= m_Wrapper.m_RocketActionsCallbackInterface.OnIsPause;
+                    @IsPause.canceled -= m_Wrapper.m_RocketActionsCallbackInterface.OnIsPause;
                 }
                 m_Wrapper.m_RocketActionsCallbackInterface = instance;
                 if (instance != null)
@@ -194,6 +220,9 @@ namespace UdemyProject1.Input
                     @LeftRight.started += instance.OnLeftRight;
                     @LeftRight.performed += instance.OnLeftRight;
                     @LeftRight.canceled += instance.OnLeftRight;
+                    @IsPause.started += instance.OnIsPause;
+                    @IsPause.performed += instance.OnIsPause;
+                    @IsPause.canceled += instance.OnIsPause;
                 }
             }
         }
@@ -202,6 +231,7 @@ namespace UdemyProject1.Input
         {
             void OnForceUp(InputAction.CallbackContext context);
             void OnLeftRight(InputAction.CallbackContext context);
+            void OnIsPause(InputAction.CallbackContext context);
         }
     }
 }

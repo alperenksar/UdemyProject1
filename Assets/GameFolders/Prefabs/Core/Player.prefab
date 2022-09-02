@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerRigidbody: {fileID: 3273714353690586426}
+  _PausePanel: {fileID: 0}
   _turnSpeed: 200
 --- !u!114 &389721275
 MonoBehaviour:

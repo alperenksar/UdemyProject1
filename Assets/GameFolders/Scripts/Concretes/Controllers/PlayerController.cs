@@ -12,6 +12,8 @@ namespace UdemyProject1.Controllers
     {
         [SerializeField] Rigidbody _playerRigidbody;
 
+        [SerializeField] GameObject _PausePanel;
+
         Mover _mover;
         DefaultInput _Input;
         Rotator _rotator;
@@ -23,7 +25,6 @@ namespace UdemyProject1.Controllers
         float _leftRight;
 
         public float _turnSpeed;
-
         public bool CanMove => _canMove;
 
 
@@ -34,6 +35,8 @@ namespace UdemyProject1.Controllers
             _Input = new DefaultInput();
             _mover = new Mover(GetComponent<Rigidbody>());
             _fuel =GetComponent<Fuel>();
+
+
         }
         private void Start()
         {
@@ -42,17 +45,25 @@ namespace UdemyProject1.Controllers
 
 
         // Update is called once per frame
+        //Updateler ile input alýrýz...
         void Update()
         {
-            //Updateler ile input alýrýz...
+            if (_Input.IsPause)
+            {
+                Time.timeScale = 0f;
+                _PausePanel.SetActive(true);
 
-            //if (!_canMove)
-            //{
-            //    return;
-            //}
+            }
 
+            else if (!_Input.IsPause)
+            {
+                Time.timeScale = 1f;
+                _PausePanel.SetActive(false);
+            }
+
+    
             if (!_canMove) return;
-
+                   
             if (_Input.IsForceUp && !_fuel.IsEmpty) 
             {
                 _canForceUp = true;
@@ -112,9 +123,7 @@ namespace UdemyProject1.Controllers
             _fuel.FuelIncrease(0f);
         }
 
-
-
-
+    
     }
 
 
