@@ -13,7 +13,7 @@ namespace UdemyProject1.Controllers
         {
             PlayerController player = collision.collider.GetComponent<PlayerController>();
 
-            if (player == null)
+            if (player == null || !player.CanMove) 
             {
                 return;
             }
@@ -23,6 +23,10 @@ namespace UdemyProject1.Controllers
                 _endEffect.SetActive(true);
                 GameManager.Instance.MissionSucced();
 
+            }
+            else
+            {
+                GameManager.Instance.GameOver();
             }
         }
 

@@ -10,19 +10,19 @@ namespace UdemyProject1.Managers
 {
     public class GameManager : SingletonThisObject<GameManager>
     {
-
         public event System.Action OnGameOver;
         public event System.Action OnMissionSucced;
 
 
         private void Awake()
         {
-            SingletonThisGameObject(this);
+            SingletonThisGameObject(this);            
+            //SoundManager.Instance.PlaySound(0);
         }
 
         public void GameOver()
         {
-            OnGameOver?.Invoke();
+            OnGameOver?.Invoke();           
 
             //if (OnGameOver != null)
             //{
@@ -42,12 +42,17 @@ namespace UdemyProject1.Managers
 
         private IEnumerator LoadLevelSceneAsync(int levelindex)
         {
+            SoundManager.Instance.StopSound(0);
             yield return SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+levelindex);
+            SoundManager.Instance.PlaySound(1);
+
         }
 
         public void LoadMenuScene()
         {
+            SoundManager.Instance.StopSound(1);
             StartCoroutine("LoadMenuSceneAsync");
+            SoundManager.Instance.PlaySound(0);
         }
 
         IEnumerator LoadMenuSceneAsync()

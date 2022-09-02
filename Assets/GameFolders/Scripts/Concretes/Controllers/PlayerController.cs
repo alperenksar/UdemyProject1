@@ -21,7 +21,10 @@ namespace UdemyProject1.Controllers
         bool _canMove;
         bool _canForceUp;
         float _leftRight;
+
         public float _turnSpeed;
+
+        public bool CanMove => _canMove;
 
 
 
@@ -79,26 +82,37 @@ namespace UdemyProject1.Controllers
 
         private void OnEnable()
         {
-            GameManager.Instance.OnGameOver += HandleOnEventTrigger;
-            GameManager.Instance.OnMissionSucced += HandleOnEventTrigger;
+            GameManager.Instance.OnGameOver += HandleOnEventTriggerGameOver;
+            GameManager.Instance.OnMissionSucced += HandleOnEventTriggerMissionOver;
         }
 
         private void OnDisable()
         {
-            GameManager.Instance.OnGameOver -= HandleOnEventTrigger;
-            GameManager.Instance.OnMissionSucced -= HandleOnEventTrigger;
+            GameManager.Instance.OnGameOver -= HandleOnEventTriggerGameOver;
+            GameManager.Instance.OnMissionSucced -= HandleOnEventTriggerMissionOver;
         }
 
-        private void HandleOnEventTrigger()
+        private void HandleOnEventTriggerGameOver()
         {
-            _playerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            //_playerRigidbody.constraints = RigidbodyConstraints.FreezeAll;          
+            _playerRigidbody.useGravity = false;                   
             _canMove = false;
             _canForceUp = false;
             _leftRight = 0f;
             _fuel.FuelIncrease(0f);
         }
 
-       
+        private void HandleOnEventTriggerMissionOver()
+        {
+            //_playerRigidbody.constraints = RigidbodyConstraints.FreezeAll;          
+            _playerRigidbody.constraints = RigidbodyConstraints.FreezePosition;
+            _canMove = false;
+            _canForceUp = false;
+            _leftRight = 0f;
+            _fuel.FuelIncrease(0f);
+        }
+
+
 
 
     }

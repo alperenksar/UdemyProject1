@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UdemyProject1.Managers;
 
 namespace UdemyProject1.Movements
 {
@@ -30,6 +30,10 @@ namespace UdemyProject1.Movements
                 _particle.Stop();
             }
 
+            
+            SoundManager.Instance.StopSound(2);
+
+
 
         }
 
@@ -42,6 +46,8 @@ namespace UdemyProject1.Movements
             {
                 _particle.Play();
             }
+            SoundManager.Instance.PlaySound(2);
+
 
 
         }
